@@ -33,6 +33,11 @@ namespace BubbleSort
 
         public static void RBS(int[] array, int unsortedLength)
         {
+            if (array == null)
+            {
+                throw new ArgumentNullException(nameof(array));
+            }
+
             if (unsortedLength == 0)
             {
                 return;
