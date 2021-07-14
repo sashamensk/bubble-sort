@@ -12,8 +12,43 @@ namespace BubbleSort
         /// </summary>
         public static void BubbleSort(this int[] array)
         {
-            // TODO #1. Implement the method using a loop statements.
-            throw new NotImplementedException();
+            if (array == null)
+            {
+                throw new ArgumentNullException(nameof(array));
+            }
+
+            for (int unsortedLength = array.Length; unsortedLength >= 0; unsortedLength--)
+            {
+                for (int i = 0; i < unsortedLength - 1; i++)
+                {
+                    if (array[i] > array[i + 1])
+                    {
+                        int temp = array[i];
+                        array[i] = array[i + 1];
+                        array[i + 1] = temp;
+                    }
+                }
+            }
+        }
+
+        public static void RBS(int[] array, int unsortedLength)
+        {
+            if (unsortedLength == 0)
+            {
+                return;
+            }
+
+            RBS(array, unsortedLength - 1);
+
+            for (int i = 0; i <= array.Length - unsortedLength - 1; i++)
+            {
+                if (array[i] > array[i + 1])
+                {
+                    int temp = array[i];
+                    array[i] = array[i + 1];
+                    array[i + 1] = temp;
+                }
+            }
         }
 
         /// <summary>
@@ -21,8 +56,12 @@ namespace BubbleSort
         /// </summary>
         public static void RecursiveBubbleSort(this int[] array)
         {
-            // TODO #2. Implement the method using recursion algorithm.
-            throw new NotImplementedException();
+            if (array == null)
+            {
+                throw new ArgumentNullException(nameof(array));
+            }
+
+            RBS(array, array.Length);
         }
     }
 }
